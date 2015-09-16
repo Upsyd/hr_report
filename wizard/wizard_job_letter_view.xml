@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+        <record id="view_wizard_job_letter_form" model="ir.ui.view">
+            <field name="name">wizard.job.letter.form</field>
+            <field name="model">wizard.job.letter</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Job Offer Letter">
+
+                    <group>
+                        <field name="joining_date"/>
+                        <field name="hr_name"/>
+                        <field name="post"/>
+                        <field name="employee" />
+
+                    </group>
+                    <footer>
+                        <button string="Print" type="action" name="%(action_job_letter)d"/>
+                        or
+                        <button string="Send By E-mail" type="object" name="print_mail_job_letter"/>
+                    </footer>
+
+                </form>
+            </field>
+
+        </record>
+
+        <act_window name="Job Offer letter" 
+            res_model="wizard.job.letter"
+            key2="client_action_multi" 
+            src_model="hr.applicant"
+            view_mode="form" 
+            target="new" 
+            view_type="form"
+            id="act_wizard_job_letter_menu"/>    
+
+</data>
+<data noupdate="1">
+                    <!--Email template -->
+    <record id="email_template_job_letter" model="email.template">
+        <field name="name">JOb Offer Letter - Send by Email</field>
+        <field name="email_from">${(user.email or '')}</field>
+        <field name="subject"> Job Offer Letter </field>
+        <field name="email_to">${(object.email_from or '')}</field>
+        <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="report_template" ref="action_job_letter"/>
+		
+       
+         <field name="body_html"><![CDATA[
+         <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); 					background-color: #FFF; ">
+         <p>
+            Hello Miss/Mr. ${(object.partner_name)},
+            Hope you are doing great, Congratulations you got a Job!!!!!!!!!
+
+            We please offer you Job position of ${(object.post)},  and thank you very much accepting it,
+please find attached copy of Job Offer letter, for other formalities you
+can directly talk to Mr/Miss.${(user.name)},, We will schedule meeting discuss in
+details if it required.
+
+Welcome to Browseinfo, we would love to have on board & sure we will
+have blast together.
+
+have a great day,
+
+Kind Regards
+
+<b>Thank you</b>
+
+HR team Browseinfo
+
+<a href>career@browseinfo.in</a>
+
+<a href>www.browseinfo.in</a>
+             
+
+</p>
+</div>
+]]>
+            </field> 
+            </record>
+            </data>
+</openerp>

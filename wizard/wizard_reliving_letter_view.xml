@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_wizard_reliving_letter_form" model="ir.ui.view">
+            <field name="name">wizard.reliving.letter.form</field>
+            <field name="model">wizard.reliving.letter</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Print">
+
+                    <group>
+                        <field name="print_by" select="1" required="1"/>
+                        <field name="reliving_date" required="1"/>
+                        <field name="employee" invisible="1"/>
+                        <field name="job_title" invisible="1"/>
+
+                    </group>
+                    <footer>
+                        <button string="Print" type="action" name="%(action_reliving_letter_report)d"/>
+                        or
+                        <button string="Print and mail" type="object" name="print_mail_reliving_letter"/>
+                    </footer>
+
+                </form>
+            </field>
+
+        </record>
+
+        <act_window name="Print Reliving Letter"
+            res_model="wizard.reliving.letter"
+            key2="client_action_multi"
+            src_model="hr.employee"
+            view_mode="form" target="new"
+            view_type="form"
+            id="act_wizard_reliving_letter_menu"/>
+    </data>
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="email_template_reliving_letter" model="email.template">
+            <field name="name">Reliving Letter - Send by Email</field>
+            <field name="email_from">${(user.email or '')}</field>
+            <field name="subject"> ${(object.name or '')}-Reliving letter </field>
+            <field name="email_to">${(object.work_email or '')}</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="action_reliving_letter_report"/>
+            <field name="report_name">Reliving Letter_${(object.name or '')}</field>
+
+            <field name="body_html">
+                <![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); 					background-color: #FFF; ">
+                    <p>hello ${object.name}, </p>
+                    <p>Here I have attached your experience letter</p>
+                </div>
+                ]]>
+            </field>
+        </record>
+    </data>
+</openerp>
+
