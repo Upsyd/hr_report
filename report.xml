@@ -2,7 +2,7 @@
 <openerp>
     <data>
 
-        <report id="action_job_letter"
+        <!--report id="action_job_letter"
             model="wizard.job.letter"
             string="Job Offer Letter"
             report_type="qweb-pdf"
@@ -19,6 +19,29 @@
 
         <report id="action_reliving_letter_report"
             model="wizard.reliving.letter"
+            string="Print Reliving Letter"
+            report_type="qweb-pdf"
+            name="hr_report.report_reliving_letter_document"
+            file="hr_report.report_reliving_letter_document"
+            /-->.
+            
+        <report id="action_job_letter"
+            model="hr.employee"
+            string="Job Offer Letter"
+            report_type="qweb-pdf"
+            name="hr_report.report_job_print_letter"
+            file="hr_report.report_job_print_letter"/>
+
+        <report id="action_exp_letter_report"
+            model="hr.employee"
+            string="Print Experience Letter"
+            report_type="qweb-pdf"
+            name="hr_report.report_exp_letter_document"
+            file="hr_report.report_exp_letter_document"
+            />
+
+        <report id="action_reliving_letter_report"
+            model="hr.employee"
             string="Print Reliving Letter"
             report_type="qweb-pdf"
             name="hr_report.report_reliving_letter_document"

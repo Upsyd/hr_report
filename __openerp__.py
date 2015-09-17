@@ -29,7 +29,7 @@
     'author': 'BrowseInfo',
     'website': 'http://www.browseinfo.in',
     'images': ['pic.png'],
-    'depends': ['hr_recruitment', 'base', 'hr', 'email_template'],
+    'depends': ['hr_recruitment', 'base', 'hr', 'email_template', 'report'],
     'data': ['report.xml',
              'wizard/wizard_job_letter_view.xml',
              'wizard/wizard_exp_letter_view.xml',

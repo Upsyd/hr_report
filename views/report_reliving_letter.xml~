@@ -4,10 +4,7 @@
         <template id="report_reliving_letter_document">
 
             <t t-call="report.html_container">
-				 
               <t t-foreach="docs" t-as="o">  
-			
-
             <div class="page">
                 <template id="external_layout_header">
                     <div class="header">
@@ -36,19 +33,19 @@
                 <p style="font_size=100%">         
                     To whom so ever it may concern <br/><br/>
 
-                    This is to certify that <b><span t-field="o.employee"/></b> has served in our organization 
- <b><span t-field="o.reliving_date"/> </b> and was designated as 
- <span style="color:blue;" t-field="o.job_title"/> in 
+                    This is to certify that <b><span t-field="o.name"/></b> has served in our organization 
+ <b><!--span t-field="o.reliving_date"/--> </b> and was designated as 
+ <span style="color:blue;" t-field="o.job_id"/> in 
                     <span style="color:blue;">Browseinfo OpenERP division.</span>
                     <br/><br/>
-                    <b><span t-field="o.employee"/></b>  has resigned from the services of the Organization of his own accord. During his
+                    <b><span t-field="o.name"/></b>  has resigned from the services of the Organization of his own accord. During his
 tenure with us we found her sincere and hardworking. It is also certified that he had drawn
 Rs25000 monthly basis as his salary
-The resignation letter dated of <b><span t-field="o.employee"/></b> , has been accepted by the Competent Authority
-with effect from close of office hours on. Accordingly <b><span t-field="o.employee"/></b> will, henceforth, not
+The resignation letter dated of <b><span t-field="o.name"/></b> , has been accepted by the Competent Authority
+with effect from close of office hours on. Accordingly <b><span t-field="o.name"/></b> will, henceforth, not
 eligible for any benefits of employment at Browseinfo.
 However, on clearance of all dues payable by him to the Company, he stands relieved from
-the services of Browseinfo India Limited with effect from close of office hours on <b><span t-field="o.reliving_date"/> </b>.
+the services of Browseinfo India Limited with effect from close of office hours on <b><!--span t-field="o.reliving_date"/--> </b>.
 
 
                     <br/><br/>
@@ -56,18 +53,13 @@ the services of Browseinfo India Limited with effect from close of office hours 
 
                 </p>
                 Sincerely,<br/>
-                <span t-field="o.print_by"/>
+                <span t-field="o.parent_id.name"/>
                 <br/><br/>
-              Opening and ending tag mismatch: template line 4 and t, line 85, column 6
    <p style = "color:blue;"> Browseinfo.</p>
-               
-
                 <br/>
 
 
-
-
-                <template id="external_layout_footer">
+        <template id="external_layout_footer">
                     <div class="footer">
                         <div style="border-top: 1px solid black;">
                             <ul class="list-inline">

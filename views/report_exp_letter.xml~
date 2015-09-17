@@ -37,7 +37,7 @@
                         <p style="font_size=100%">         
                             To whom so ever it may concern <br/><br/>
 
-                            This is to certify that <b><span t-field="o.employee"/></b> has worked with us from  <b><span t-field="o.start_date"/> </b>to  <b><span t-field="o.end_date"/></b> and was designated as  <span style="color:blue;" t-field="o.job_title"/> in 
+                            This is to certify that <b><span t-field="o.name"/></b> has worked with us from  <b><span t-field="o.start_date"/> </b>to  <b><span t-field="o.end_date"/></b> and was designated as  <span style="color:blue;" t-field="o.job_title"/> in 
                             <span style="color:blue;">Browseinfo OpenERP division.</span>
                             <br/><br/>
                             During his work period <b><span t-field="o.employee"/> </b>remained involved in his work dedicatedly. I found him pretty active in whatever task I have provided him. He is a confident person. He is professionally sound, hard-working and devoted worker. He has the motivation to take initiative and I am gratified that he had been helpful in advancement of our organization. 

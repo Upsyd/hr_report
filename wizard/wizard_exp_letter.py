@@ -41,22 +41,24 @@ class wizard_exp_letter(osv.osv_memory):
         if context is None:
             context = {}
         data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
         email_obj = self.pool.get('email.template')
-        template_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'hr_report', 'email_template_exp_letter')[1]
-        email_obj.send_mail(cr, uid, template_id, context['active_id'], True,
-                                context=context)
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.employee'})
+        template_id = self.pool.get('ir.model.data').get_object_reference(
+            cr, uid, 'hr_report', 'email_template_exp_letter')[1]
+        email_obj.send_mail(
+            cr, uid, template_id, id_list[0], True, context=ctx)
         datas = {
-                'ids':context.get('active_ids', []),
-                'model': 'hr.employee',
-                'form': data
-            }
+            'ids': id_list,
+            'model': 'hr.employee',
+            'form': data
+        }
         return {
-               
-                'type': 'ir.actions.report.xml',
-                'datas': datas,
-                'report_name': 'hr_report.report_exp_letter_document',
-                
-
+            'type': 'ir.actions.report.xml',
+            'datas': datas,
+            'report_name': 'hr_report.report_exp_letter_document',
             }
 
     _columns = {
