@@ -26,11 +26,12 @@
             /-->.
             
         <report id="action_job_letter"
-            model="hr.employee"
+            model="hr.applicant"
             string="Job Offer Letter"
             report_type="qweb-pdf"
-            name="hr_report.report_job_print_letter"
-            file="hr_report.report_job_print_letter"/>
+            name="hr_report.report_job_letter_document"
+            file="hr_report.report_job_letter_document"
+            menu="False"/>
 
         <report id="action_exp_letter_report"
             model="hr.employee"
@@ -38,6 +39,7 @@
             report_type="qweb-pdf"
             name="hr_report.report_exp_letter_document"
             file="hr_report.report_exp_letter_document"
+            menu="False"
             />
 
         <report id="action_reliving_letter_report"
@@ -46,6 +48,7 @@
             report_type="qweb-pdf"
             name="hr_report.report_reliving_letter_document"
             file="hr_report.report_reliving_letter_document"
+            menu="False"
             />
 
 

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-
-
-
         <record id="view_wizard_job_letter_form" model="ir.ui.view">
             <field name="name">wizard.job.letter.form</field>
             <field name="model">wizard.job.letter</field>
@@ -20,7 +17,9 @@
 
                     </group>
                     <footer>
-                        <button string="Print" type="action" name="%(action_job_letter)d"/>
+                        <button string="Print" type="object" name="print_job_letter"/>
+                        or
+                        <button string="Print Without Header/Footer" type="object" name="print_job_letter_without"/>
                         or
                         <button string="Send By E-mail" type="object" name="print_mail_job_letter"/>
                     </footer>
@@ -46,8 +45,8 @@
         <field name="name">JOb Offer Letter - Send by Email</field>
         <field name="email_from">${(user.email or '')}</field>
         <field name="subject"> Job Offer Letter </field>
-        <field name="email_to">${(object.email_from or '')}</field>
-        <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="email_to">${(object.work_email or '')}</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
         <field name="auto_delete" eval="True"/>
         <field name="report_template" ref="action_job_letter"/>
 		

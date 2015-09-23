@@ -40,7 +40,7 @@ class wizard_reliving_letter(osv.osv_memory):
     def print_mail_reliving_letter(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
-
+        context.update({'wiz_ids':ids,'print_header':True})
         data = self.read(cr, uid, ids)[0]
         id_list = []
         id_list.append(context.get('active_id'))
@@ -54,19 +54,49 @@ class wizard_reliving_letter(osv.osv_memory):
             'model': 'hr.employee',
             'form': data
         }
-        email_obj.send_mail(cr, uid, template_id, id_list[0], True,
-                            context=ctx)
-        return {
-            'type': 'ir.actions.report.xml',
-            'report_name': 'hr_report.report_reliving_letter_document',
-            'datas': datas,
+        return email_obj.send_mail(cr, uid, template_id, id_list[0], True,context=ctx)
+                            
+    
+    def print_reliving_letter(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':True})
+        data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
+        email_obj = self.pool.get('email.template')
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.employee'})
+        datas = {
+            'ids': id_list,
+            'model': 'hr.employee',
+            'form': data
         }
-
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_reliving_letter_document', data=datas, context=context)
+    
+    def print_reliving_letter_without(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':False})
+        data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
+        email_obj = self.pool.get('email.template')
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.employee'})
+        datas = {
+            'ids': id_list,
+            'model': 'hr.employee',
+            'form': data
+        }
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_reliving_letter_document', data=datas, context=context)
+    
     _columns = {
         "print_by": fields.many2one('res.users', 'Print By'),
         "reliving_date": fields.date('Reliving Date'),
         "employee": fields.char("Employee"),
         "job_title": fields.char("Job Title"),
+        "salary" : fields.char("Salary")
 
     }
 

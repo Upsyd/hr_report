@@ -1,83 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
-        <template id="report_reliving_letter_document">
+	<data>
+		<template id="report_reliving_letter_document">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page">
+						<t t-if="get_data_reliving().get('print_header')">
+							<template id="external_layout_header">
+								<div class="header">
 
-            <t t-call="report.html_container">
-              <t t-foreach="docs" t-as="o">  
-            <div class="page">
-                <template id="external_layout_header">
-                    <div class="header">
-
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <img src="/hr_report/static/src/img/pic.png"/>
-                            </div>
-                            <div class="col-xs-9 text-right" style="margin-top:20px;"> SENSING YOUR NEEDS 
-                            </div>
-                            <div class="row zero_min_height">
-                                <div class="col-xs-12">
-                                    <div style="border-bottom: 1px solid black;">
-                                    </div>
+									<div class="row">
+										<div class="col-xs-3">
+											<img src="/hr_report/static/src/img/pic.png" />
+										</div>
+										<div class="col-xs-9 text-right" style="margin-top:20px;"> SENSING YOUR NEEDS 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
+										<div class="row zero_min_height">
+											<div class="col-xs-12">
+												<div style="border-bottom: 1px solid black;">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</template>
+						</t>
+
+						<center>
+							<strong>
+								<u>
+									<b style="color:blue;">Reliving Letter</b>
+								</u>
+							</strong>
+						</center>
 
 
-                <center><strong><u><b style="color:blue;">Reliving Letter</b></u></strong></center>
+						<br />
+						<br />
+						<p style="font_size=100%">         
+                    To whom so ever it may concern <br />
+							<br />
 
-
-                <br/><br/>
-                <p style="font_size=100%">         
-                    To whom so ever it may concern <br/><br/>
-
-                    This is to certify that <b><span t-field="o.name"/></b> has served in our organization 
- <b><!--span t-field="o.reliving_date"/--> </b> and was designated as 
- <span style="color:blue;" t-field="o.job_id.name"/> in 
+                    This is to certify that <b>
+								<span t-field="o.name" />
+							</b> has served in our organization 
+ <b>
+								<!--span t-field="o.reliving_date"/-->
+							</b> and was designated as 
+ <span style="color:blue;" t-field="o.job_id.name" /> in 
                     <span style="color:blue;">Browseinfo OpenERP division.</span>
-                    <br/><br/>
-                    <b><span t-field="o.name"/></b>  has resigned from the services of the Organization of his own accord. During his
+							<br />
+							<br />
+							<b>
+								<span t-field="o.name" />
+							</b>  has resigned from the services of the Organization of his own accord. During his
 tenure with us we found her sincere and hardworking. It is also certified that he had drawn
-Rs25000 monthly basis as his salary
-The resignation letter dated of <b><span t-field="o.name"/></b> , has been accepted by the Competent Authority
-with effect from close of office hours on. Accordingly <b><span t-field="o.name"/></b> will, henceforth, not
+Rs <span t-esc="get_data_reliving().get('wiz_bro_rec').salary" /> monthly basis as his salary
+The resignation letter dated of <b>
+								<span t-field="o.name" />
+							</b> , has been accepted by the Competent Authority
+with effect from close of office hours on. Accordingly <b>
+								<span t-field="o.name" />
+							</b> will, henceforth, not
 eligible for any benefits of employment at Browseinfo.
 However, on clearance of all dues payable by him to the Company, he stands relieved from
-the services of Browseinfo India Limited with effect from close of office hours on <b><!--span t-field="o.reliving_date"/--> </b>.
+the services of Browseinfo India Limited with effect from close of office hours on <b>
+								<!--span t-field="o.reliving_date"/-->
+							</b>.
 
 
-                    <br/><br/>
+                    <br />
+							<br />
                     We wish him all the best in all his future endeavors.
 
                 </p>
-                Sincerely,<br/>
-                <span t-field="o.parent_id.name"/>
-                <br/><br/>
-   <p style = "color:blue;"> Browseinfo.</p>
-                <br/>
-
-
-        <template id="external_layout_footer">
-                    <div class="footer">
-                        <div style="border-top: 1px solid black;">
-                            <ul class="list-inline">
-                                <li>2014 BrowseInfo all rights reserved. <u style ="color:blue;">BrowseInfo</u></li>
-
-                                <li class="col-xs-12 text-right" style ="color:blue;"><u>www.browseinfo.in  </u> </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </t>
-  
-</t>
-
-
-        </template>
-    </data>
+                Sincerely,<br />
+						<span t-field="o.parent_id.name" />
+						<br />
+						<br />
+						<p style="color:blue;"> Browseinfo.</p>
+						<br />
+						<t t-if="get_data_reliving().get('print_header')">
+							<template id="external_layout_footer">
+								<div class="footer">
+									<div style="border-top: 1px solid black;">
+										<ul class="list-inline">
+											<li>2014 BrowseInfo all rights reserved. <u style="color:blue;">BrowseInfo</u>
+											</li>
+											<li class="col-xs-12 text-right" style="color:blue;">
+												<u>www.browseinfo.in  </u>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</template>
+						</t>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
 </openerp>

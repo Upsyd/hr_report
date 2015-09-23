@@ -37,33 +37,63 @@ class wizard_job_letter(osv.osv_memory):
         return res
 
     def print_mail_job_letter(self, cr, uid, ids, context=None):
-        print "____________print_________"
         if context is None:
             context = {}
+        context.update({'wiz_ids':ids,'print_header':True})
         data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
         email_obj = self.pool.get('email.template')
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.applicant'})
         template_id = self.pool.get('ir.model.data').get_object_reference(cr, uid,
                                                                              'hr_report',
                                                                              'email_template_job_letter')[1]
-        email_obj.send_mail(cr, uid, template_id, context['active_id'],
-                                True, context=context)
         datas = {
-                'ids': context.get('active_ids', []),
+                'ids': id_list,
                 'model': 'hr.applicant',
                 'form': data
             }
-        return {
-                'type': 'ir.actions.report.xml',
-                'datas': datas,
-                'report_name': 'hr_report.report_job_print_letter',
-                
-
+        
+        return email_obj.send_mail(cr, uid, template_id, data['employee'][0],True, context=ctx)
+                                
+    
+    def print_job_letter(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':True})
+        data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.applicant'})
+        datas = {
+                'ids': id_list,
+                'model': 'hr.applicant',
+                'form': data
             }
-
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_job_letter_document', data=datas, context=context)
+    
+    def print_job_letter_without(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':False})
+        data = self.read(cr, uid, ids)[0]
+        id_list = []
+        id_list.append(context.get('active_id'))
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.applicant'})
+        datas = {
+                'ids': id_list,
+                'model': 'hr.applicant',
+                'form': data
+            }
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_job_letter_document', data=datas, context=context)
+    
     _columns = {
         'joining_date': fields.date("Date Of Joining"),
         'hr_name': fields.many2one('res.users', "Hr Name"),
         'post': fields.many2one('hr.job', "Post"),
-        'employee': fields.char("Employee Name"),
+        'employee': fields.many2one("hr.employee","Employee Name"),
     }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

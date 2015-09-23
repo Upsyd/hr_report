@@ -8,27 +8,23 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <form string="Print">
-
                     <group>
                         <field name="print_by" select="1" required="1"/>
                         <field name="start_date" required="1"/>
                         <field name="end_date" required="1"/>
                         <field name="employee" invisible="1"/>
                         <field name="job_title" invisible="1"/>
-
                     </group>
                     <footer>
-                        <button string="Print" type="action" name="%(action_exp_letter_report)d"/>
+                        <button string="Print" type="object" name="print_exp_letter"/>
+                        or 
+                        <button string="Print Without Header/Footer" type="object" name="print_exp_letter_without"/>
                         or
                         <button string="Print and mail" type="object" name="print_mail_exp_letter"/>
                     </footer>
-
                 </form>
             </field>
-
         </record>
-
-
 
         <act_window name="Print Experience Letter"
             res_model="wizard.exp.letter"
@@ -37,8 +33,6 @@
             view_mode="form" target="new"
             view_type="form"
             id="act_wizard_exp_letter_menu"/>
-
-
     </data>
 
 
@@ -53,7 +47,6 @@
             <field name="auto_delete" eval="True"/>
             <field name="report_template" ref="action_exp_letter_report"/>
             <field name="report_name">Experience Letter_${(object.name or '')}</field>
-
             <field name="body_html">
                 <![CDATA[
                 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); 					background-color: #FFF; ">

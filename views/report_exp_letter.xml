@@ -1,109 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
-        <template id="report_exp_letter_document">
-
-            <t t-call="report.html_container">
-
-                <t t-foreach="docs" t-as="o">  
-
-					
-                    <div class="page">
-                        <template id="external_layout_header">
-                            <div class="header">
-
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/hr_report/static/src/img/pic.png"/>
+	<data>
+		<template id="report_exp_letter_document">
+			<t t-call="report.html_container">
+				<t t-foreach="get_data().get('wiz_bro_rec')" t-as="o">
+					<div class="page">
+                        <t t-if="get_data().get('print_header')">
+							<template id="external_layout_header">
+								<div class="header">
+									<div class="row">
+										<div class="col-xs-3">
+											<img src="/hr_report/static/src/img/pic.png"/>
+										</div>
+										<div class="col-xs-9 text-right" style="margin-top:20px;"> SENSING YOUR NEEDS 
                                     </div>
-                                    <div class="col-xs-9 text-right" style="margin-top:20px;"> SENSING YOUR NEEDS 
-                                    </div>
-                                    <div class="row zero_min_height">
-                                        <div class="col-xs-12">
-                                            <div style="border-bottom: 1px solid black;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+										<div class="row zero_min_height">
+											<div class="col-xs-12">
+												<div style="border-bottom: 1px solid black;">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</template>
+                        </t>
+							<center>
+								<strong>
+									<u>
+										<b style="color:blue;">Experience Certificate</b>
+									</u>
+								</strong>
+							</center>
 
-                            </div>
-                        </template>
 
+							<br/>
+							<br/>
+							<p style="font_size=100%">         
+                            To whom so ever it may concern <br/>
+								<br/>
 
-                        <center><strong><u><b style="color:blue;">Experience Certificate</b></u></strong></center>
-
-
-                        <br/><br/>
-                        <p style="font_size=100%">         
-                            To whom so ever it may concern <br/><br/>
-
-                            This is to certify that <b><span t-field="o.employee"/></b> has worked with us from  <b><span t-field="o.start_date"/> </b>to  <b><span t-field="o.end_date"/></b> and was designated as  <span style="color:blue;" t-field="o.job_title"/> in 
+                            This is to certify that <b>
+									<span t-esc="o.employee"/>
+								</b> has worked with us from  <b>
+									<span t-esc="o.start_date"/>
+								</b>to  <b>
+									<span t-esc="o.end_date"/>
+								</b> and was designated as  <span style="color:blue;" t-esc="o.job_title"/> in 
                             <span style="color:blue;">Browseinfo OpenERP division.</span>
-                            <br/><br/>
-                            During his work period <b><span t-field="o.employee"/> </b>remained involved in his work dedicatedly. I found him pretty active in whatever task I have provided him. He is a confident person. He is professionally sound, hard-working and devoted worker. He has the motivation to take initiative and I am gratified that he had been helpful in advancement of our organization. 
-                            <br/><br/>
+								<br/>
+								<br/>
+                            During his work period <b>
+									<span t-esc="o.employee"/>
+								</b>remained involved in his work dedicatedly. I found him pretty active in whatever task I have provided him. He is a confident person. He is professionally sound, hard-working and devoted worker. He has the motivation to take initiative and I am gratified that he had been helpful in advancement of our organization. 
+                            <br/>
+								<br/>
                             Moreover, I would like to reflect over his conduct during his stay with us. He has a genial temperament and can efficiently work in a team. All my staff is pleased with him and feels comfortable in teaming and coordinating with him for the realization of organizational goals and objectives.
-                            <br/><br/>
-                            This is also to certify that <b><span t-field="o.employee"/> </b>holds no liabilities towards the company.
+                            <br/>
+								<br/>
+                            This is also to certify that <b>
+									<span t-esc="o.employee"/>
+								</b>holds no liabilities towards the company.
 
-                            <br/><br/>
+                            <br/>
+								<br/>
                             I wish him all the best in all his future endeavors.
                         </p>
                         Sincerely,<br/>
-                        <span t-field="o.print_by"/>
-                        <br/><br/>
-                        <p style = "color:blue;"> Browseinfo.</p>
-                        <br/><br/>
-                        I accept this offer.<br/><br/>
+							<span t-esc="o.print_by.name"/>
+							<br/>
+							<br/>
+							<p style = "color:blue;"> Browseinfo.</p>
+							<br/>
+							<br/>
+                        I accept this offer.<br/>
+							<br/>
+							<br/>
+							<div class="col-md-12">
+								<table style="width:80%">
+									<tr>
+										<td>
+											<div class="col-md-4">
+												<div style="border-top: 1px solid black;">Name</div>
+											</div>
 
-                        <br/>
+										</td>
+										<td>
+										</td>
+										<div class="col-md-4">
+										</div>
+										<td>
+											<div class="col-md-4">
+												<div style="border-top: 1px solid black;">Date</div>
+											</div>
 
+										</td>
 
+									</tr>
 
-                        <div class="col-md-12">
-                            <table style="width:80%">
-                                <tr>
-                                    <td>
-                                        <div class="col-md-4">
-                                            <div style="border-top: 1px solid black;">Name</div>
-                                        </div>
+								</table>
+							</div>
+                            <t t-if="get_data().get('print_header')">
+    							<template id="external_layout_footer">
+    								<div class="footer">
+    
+    									<div style="border-top: 1px solid black; margin-bottom:20px">
+    										<ul class="list-inline">
+    											<li>2014 BrowseInfo all rights reserved. <u style ="color:blue;">BrowseInfo</u>
+    											</li>
+    
+    											<li class="col-xs-12 text-right" style ="color:blue;">
+    												<u>www.browseinfo.in  </u>
+    											</li>
+    
+    
+    										</ul>
+    
+    									</div>
+    								</div>
+    							</template>
+                            </t>
+					</div>
+				</t>
+			</t>
 
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <div class="col-md-4"></div>
-                                    <td>
-                                        <div class="col-md-4">
-                                            <div style="border-top: 1px solid black;">Date</div>
-                                        </div>
-
-                                    </td>
-
-                                </tr>
-
-                            </table>
-                        </div>
-
-                        <template id="external_layout_footer">
-                            <div class="footer">
-
-                            <div style="border-top: 1px solid black; margin-bottom:20px">
-                                <ul class="list-inline">
-                                    <li>2014 BrowseInfo all rights reserved. <u style ="color:blue;">BrowseInfo</u></li>
-
-                                    <li class="col-xs-12 text-right" style ="color:blue;"><u>www.browseinfo.in  </u> </li>
-
-
-                                </ul>
-
-                            </div>
-                            </div>
-                        </template>
-                    </div>
-                </t>
-            </t>
-
-
-        </template>
-    </data>
+		</template>
+	</data>
 </openerp>

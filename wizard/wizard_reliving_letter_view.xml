@@ -8,26 +8,25 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <form string="Print">
-
                     <group>
                         <field name="print_by" select="1" required="1"/>
                         <field name="reliving_date" required="1"/>
+                        <field name="salary" required="1" style="width:15%%"/>
                         <field name="employee" invisible="1"/>
                         <field name="job_title" invisible="1"/>
-
                     </group>
                     <footer>
-                        <button string="Print" type="action" name="%(action_reliving_letter_report)d"/>
+                        <button string="Print" type="object" name="print_reliving_letter"/>
+                        or 
+                        <button string="Print Without Header/Footer" type="object" name="print_reliving_letter_without"/>
                         or
                         <button string="Print and Mail" type="object" name="print_mail_reliving_letter"/>
                         or
                         <button string="Cancel"  special="cancel"
                             class="oe_link"/>
                     </footer>
-
                 </form>
             </field>
-
         </record>
 
         <act_window name="Print Reliving Letter"

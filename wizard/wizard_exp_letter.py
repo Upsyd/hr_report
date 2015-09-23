@@ -23,7 +23,6 @@ from openerp.osv import osv
 from openerp.osv import fields
 from datetime import date
 
-
 class wizard_exp_letter(osv.osv_memory):
     _name = 'wizard.exp.letter'
 
@@ -36,38 +35,72 @@ class wizard_exp_letter(osv.osv_memory):
         res.update({'print_by': uid, 'employee': obj.name,
                     'job_title': obj.job_id.name})
         return res
-
+    
     def print_mail_exp_letter(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
-        data = self.read(cr, uid, ids)[0]
+        data = self.read(cr, uid, ids, context=context)[0]
+        context.update({'wiz_ids':ids,'print_header':True})
         id_list = []
         id_list.append(context.get('active_id'))
         email_obj = self.pool.get('email.template')
         ctx = context.copy()
         ctx.update({'active_model': 'hr.employee'})
-        template_id = self.pool.get('ir.model.data').get_object_reference(
-            cr, uid, 'hr_report', 'email_template_exp_letter')[1]
-        email_obj.send_mail(
-            cr, uid, template_id, id_list[0], True, context=ctx)
         datas = {
             'ids': id_list,
             'model': 'hr.employee',
             'form': data
         }
-        return {
-            'type': 'ir.actions.report.xml',
-            'datas': datas,
-            'report_name': 'hr_report.report_exp_letter_document',
-            }
-
+        template_id = self.pool.get('ir.model.data').get_object_reference(
+            cr, uid, 'hr_report', 'email_template_exp_letter')[1]
+        
+        return email_obj.send_mail(cr, uid, template_id, id_list[0], True, context=ctx)
+            
+    
+    def print_exp_letter(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':True})
+        data = self.read(cr, uid, ids, context=context)[0]
+        self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=data, context=context)
+        id_list = []
+        id_list.append(context.get('active_id'))
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.employee'})
+        #ty =self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=data, context=context)
+        
+        datas = {
+            'ids': id_list,
+            'model': 'hr.employee',
+            'form': data
+        }
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=datas, context=context)
+    
+    def print_exp_letter_without(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        context.update({'wiz_ids':ids,'print_header':False})
+        data = self.read(cr, uid, ids, context=context)[0]
+        self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=data, context=context)
+        id_list = []
+        id_list.append(context.get('active_id'))
+        ctx = context.copy()
+        ctx.update({'active_model': 'hr.employee'})
+        #ty =self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=data, context=context)
+        
+        datas = {
+            'ids': id_list,
+            'model': 'hr.employee',
+            'form': data
+        }
+        return self.pool['report'].get_action(cr, uid, [], 'hr_report.report_exp_letter_document', data=datas, context=context)
+    
     _columns = {
         "print_by": fields.many2one('res.users', 'Print By'),
         "start_date": fields.date('Start Date'),
         "end_date": fields.date('End Date'),
         "employee": fields.char("Employee"),
         "job_title": fields.char("Job Title"),
-
-    }
+        }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
