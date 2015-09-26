@@ -27,7 +27,7 @@
 							<center>
 								<strong>
 									<u>
-										<b style="color:blue;">Experience Certificate</b>
+										<b style="color:#0099FF;">Experience Certificate</b>
 									</u>
 								</strong>
 							</center>
@@ -45,8 +45,8 @@
 									<span t-esc="o.start_date"/>
 								</b>to  <b>
 									<span t-esc="o.end_date"/>
-								</b> and was designated as  <span style="color:blue;" t-esc="o.job_title"/> in 
-                            <span style="color:blue;">Browseinfo OpenERP division.</span>
+								</b> and was designated as  <span style="color:#0099FF;" t-esc="o.job_title"/> in 
+                            <span style="color:#0099FF;">Browseinfo OpenERP division.</span>
 								<br/>
 								<br/>
                             During his work period <b>
@@ -69,9 +69,9 @@
 							<span t-esc="o.print_by.name"/>
 							<br/>
 							<br/>
-							<p style = "color:blue;"> Browseinfo.</p>
+							<p style = "color:#0099FF;"> Browseinfo.</p>
 							<br/>
-							<br/>
+							<br/><br/><br/>
                         I accept this offer.<br/>
 							<br/>
 							<br/>
@@ -105,10 +105,10 @@
     
     									<div style="border-top: 1px solid black; margin-bottom:20px">
     										<ul class="list-inline">
-    											<li>2014 BrowseInfo all rights reserved. <u style ="color:blue;">BrowseInfo</u>
+    											<li>2014 BrowseInfo all rights reserved. <u style ="color:#0099FF">BrowseInfo</u>
     											</li>
     
-    											<li class="col-xs-12 text-right" style ="color:blue;">
+    											<li class="col-xs-12 text-right" style ="color:#0099FF;">
     												<u>www.browseinfo.in  </u>
     											</li>
     

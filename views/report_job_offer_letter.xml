@@ -9,10 +9,10 @@
 							<template id="external_layout_header">
 								<div class="header">
 									<div class="row">
-										<div class="col-ms-3">
+										<div class="col-xs-3">
 											<img src="/hr_report/static/src/img/pic.png" />
 										</div>
-										<div class="col-ms-9 text-right" style="margin-top:10px;"> SENSING YOUR NEEDS</div>
+										<div class="col-xs-9 text-right" style="margin-top:10px;"> SENSING YOUR NEEDS</div>
 										<div class="row zero_min_height">
 											<div class="col-xs-12">
 												<div style="border-bottom: 1px solid black;">
@@ -26,7 +26,7 @@
 							<center>
 								<strong>
 									<u>
-										<b style="color:blue;">JOB OFFER LETTER</b>
+										<b style="color:#0099FF;">JOB OFFER LETTER</b>
 									</u>
 								</strong>
 							</center>
@@ -35,7 +35,7 @@
 							<p style="font_size=100%">Dear <span t-esc="o.employee.name" />
 							</p>
 							<p style="font_size=100%">
-								<span style="color:blue;">        
+								<span style="color:#0099FF;">        
                                 Browseinfo</span> is pleased to offer you a position as a <b>
 									<span t-esc="o.post.name" />
 								</b>. We would like to
@@ -43,7 +43,7 @@
 
 							<p style="font_size=100%">As a <b>
 									<span t-esc="o.post.name" />
-								</b>, you will report to<span style="color:blue;">Browseinfo Erp Department</span>. The
+								</b>, you will report to<span style="color:#0099FF;">Browseinfo Erp Department</span>. The
                             primary responsibilities for this position include: Openerp framework, designing and
                             development modules, integrations with other different technologies. We would like you to start
                             work on <b>
@@ -57,29 +57,28 @@
                             designed to determine your suitability for continued employment by assessing your skills,
                             performance and interpersonal relationships. Employment may be terminated at any time in this
                             probationary period without notice or pay in lieu of such notice. You agree to abide by all current
-                            and future policies, rules and procedures established by<span style="color:blue;">Browseinfo</span>. Please feel free to ask for
-                            clarification for anything you are not sure of.<span style="color:blue;"> Browseinfo </span> reserves the right to terminate
+                            and future policies, rules and procedures established by<span style="color:#0099FF;">Browseinfo</span>. Please feel free to ask for
+                            clarification for anything you are not sure of.<span style="color:#0099FF;"> Browseinfo </span> reserves the right to terminate
                             employment of any employee for just cause at any time without notice and without payment in lieu
-                            of notice. <span style="color:blue;">Browseinfo</span>  will be entitled to terminate your employment for any reason other than for
+                            of notice. <span style="color:#0099FF;">Browseinfo</span>  will be entitled to terminate your employment for any reason other than for
                             just cause, upon providing to you such minimum notice as required by Indian Employment Standards
                             Act.</p>
 
 							<p style="font_size=100%">This offer will be interpreted and enforced in accordance with the laws of the Province of India. This
-                            document constitutes the whole and entire agreement between yourself and <span style="color:blue;">Browseinfo.</span>
+                            document constitutes the whole and entire agreement between yourself and <span style="color:#0099FF;">Browseinfo.</span>
 							</p>
 
 							<br>
 							</br>
-                            Congratulations and welcome to <span style="color:blue;">        
+                            Congratulations and welcome to <span style="color:#0099FF;">        
                             Browseinfo!</span>
 							<br />
 							<br />
 							<p style="font_size=100%">Sincerely,</p>
-							<br>
-							</br>
+							<br/>
 							<span t-esc="o.hr_name.name" />
-							<br>
-							</br>
+							<br/>
+							<br/><br/><br/>
 							<p style="font_size=100%">I accept this offer.</p>
 
 
@@ -91,7 +90,7 @@
 
 										<td>
 											<div class="col-md-4">
-												<div style="border-top: 1px dashed black;">Name</div>
+												<div style="border-top: 1px solid black;">Name</div>
 											</div>
 
 										</td>
@@ -101,7 +100,7 @@
 										</div>
 										<td>
 											<div class="col-md-4">
-												<div style="border-top: 1px dashed black;">Date</div>
+												<div style="border-top: 1px solid black;">Date</div>
 											</div>
 
 										</td>
@@ -117,9 +116,9 @@
 						<div class="footer">
 							<div style="border-top: 1px solid black;">
 								<ul class="list-inline">
-									<li>2015 BrowseInfo all rights reserved. <u style="color:blue;">BrowseInfo</u>
+									<li>2015 BrowseInfo all rights reserved. <u style="color:#0099FF;">BrowseInfo</u>
 									</li>
-									<li class="text-right" style="color:blue;">
+									<li class="col-xs-12 text-right" style="color:#0099FF;">
 										<u>www.browseinfo.in  </u>
 									</li>
 								</ul>

@@ -29,7 +29,7 @@
 						<center>
 							<strong>
 								<u>
-									<b style="color:blue;">Reliving Letter</b>
+									<b style="color:#0099FF;">Reliving Letter</b>
 								</u>
 							</strong>
 						</center>
@@ -47,8 +47,8 @@
  <b>
 								<!--span t-field="o.reliving_date"/-->
 							</b> and was designated as 
- <span style="color:blue;" t-field="o.job_id.name" /> in 
-                    <span style="color:blue;">Browseinfo OpenERP division.</span>
+ <span style="color:#0099FF;" t-field="o.job_id.name" /> in 
+                    <span style="color:#0099FF;">Browseinfo OpenERP division.</span>
 							<br />
 							<br />
 							<b>
@@ -78,16 +78,16 @@ the services of Browseinfo India Limited with effect from close of office hours 
 						<span t-field="o.parent_id.name" />
 						<br />
 						<br />
-						<p style="color:blue;"> Browseinfo.</p>
+						<p style="color:#0099FF;"> Browseinfo.</p>
 						<br />
 						<t t-if="get_data_reliving().get('print_header')">
 							<template id="external_layout_footer">
 								<div class="footer">
 									<div style="border-top: 1px solid black;">
 										<ul class="list-inline">
-											<li>2014 BrowseInfo all rights reserved. <u style="color:blue;">BrowseInfo</u>
+											<li>2014 BrowseInfo all rights reserved. <u style="color:#0099FF;">BrowseInfo</u>
 											</li>
-											<li class="col-xs-12 text-right" style="color:blue;">
+											<li class="col-xs-12 text-right" style="color:#0099FF;">
 												<u>www.browseinfo.in  </u>
 											</li>
 										</ul>
